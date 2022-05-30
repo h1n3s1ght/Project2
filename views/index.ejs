@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("/partials/head.ejs") %>
+    <!-- Script for Password Verification -->
+    <!-- ================================ -->
+    <script>
+        window.onload = function() {
+            document.getElementById("verifySubmit").style.visibility = "hidden";
+        }
+
+        // Make Submit Visible and Verification Hidden
+        // ===========================================
+
+        function hideAndSeek() {
+            document.getElementById("verifySubmit").style.visibility = "visible";
+            document.getElementById("verifyPassword").style.visibility = "hidden";
+        }
+
+        function verifyPass() {
+            let pass1 = document.getElementById("password").value;
+            let pass2 = document.getElementById("password2").value;
+            if (pass1.length >= 4 && pass1.length <= 15) {
+                if (pass1 != pass2) {
+                    alert("Passwords did not match. Please correct this before submitting.");
+                } else {
+                    hideAndSeek();
+                }
+            } else {
+                alert('Password must be between 4 and 15 characters.');
+            }
+        }
+    </script>
+    <title>Welcome to PlanIt Traveling</title>
+</head>
+<body>
+
+<!-- Main Modal holding the "sign-up" and "sign-in" modals -->
+    <!-- ===================================================== -->
+    <div class="container" id="mainModal">
+        <!-- Sign-Up -->
+        <!-- ======= -->
+        <button class="btn btn-primary" type="button" data-target="#myModalOne" data-toggle="modal">Sign-Up</button>
+        <div class="modal" id="myModalOne">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Sign-Up</h5>
+                        <form>
+                            <label for="fName">First Name:</label>
+                            <input type="text" name="fName" id="fName" required> <br />
+
+                            <label for="lName">Last Name:</label>
+                            <input type="text" name="lName" id="lName" required> <br />
+
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" required><br />
+
+                            <label for="password">Create Password: </label> <br />
+                            <!--  <label>("ABC" will work for now)</label>-->
+                            <input type="password" name="password" id="password" required><br />
+
+                            <label for="password"> Verify Password</label>
+                            <input type="password" id="password2"><br />
+
+                            <button type="button" onclick="verifyPass()" id="verifyPassword">Verify Passwords Match </button>
+
+                            <!-- Hidden Submit Until Passwords Match -->
+                            <!-- =================================== -->
+                            <button type="submit" id="verifySubmit"> Submit </button>
+                        </form>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Sign-In -->
+        <!-- ======= -->
+        <button class="btn btn-primary" type="button" data-target="#myModalTwo" data-toggle="modal">Sign-In</button>
+        <div class="modal" id="myModalTwo">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Sign-In</h5>
+                        <form>
+                            <label for="email">Username (email):</label>
+                            <input type="email" id="email"> <br />
+
+                            <label for="password">Password:</label>
+                            <input type="password" id="password"> <br />
+
+                            <button type="submit">Sign-In</button>
+                        </form>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
