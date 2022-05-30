@@ -1,4 +1,94 @@
-body {
+html {
+    font-family: "Futura", Arial, Helvetica, sans-serif;
     width: 100%;
-    
+}
+
+#index {
+background-image: url(https://i.imgur.com/vsI12Pl.jpg);
+background-repeat: no-repeat;
+background-size: 100%;
+-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.container {
+    font-family: "Futura", Arial, Helvetica, sans-serif;
+    text-align: center;
+    width: 40%;
+    margin-left: 29%;
+    margin-top: 2%;
+    padding-bottom: 1%;
+    display: flex;
+    background-color: beige;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+     border-radius: 10px;
+  box-shadow: 1px 1px 10px #635D5C,
+              -1px -1px 10px #635D5C,
+              1px -1px 10px #635D5C,
+              -1px 1px 10px #635D5C;
+}
+
+.modal-header h3 {
+  padding-bottom: 8%;
+}
+
+.modal-content  {
+ text-align: center;
+ width: 50%;
+    margin-left: 24%;
+    margin-top: 6%;
+    padding-bottom: 1%;
+    display: flex;
+    background-color: beige;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+     border-radius: 10px;
+  box-shadow: 1px 1px 10px #635D5C,
+              -1px -1px 10px #635D5C,
+              1px -1px 10px #635D5C,
+              -1px 1px 10px #635D5C;
+}
+
+.sideBySide {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0% 1%;
+}
+
+.sideBySide button {
+  background-color: #635D5C;
+  font-family: "Futura", Arial, Helvetica, sans-serif;
+  font-size: 1.1em;
+}
+
+.sideBySide button:hover {
+  background-color: beige;
+  color: black;
+}
+
+.btn-primary {
+    margin: 0% 2%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+}
+
+label {
+  align-content: left;
+}
+
+input {
+  width: 100%;
 }

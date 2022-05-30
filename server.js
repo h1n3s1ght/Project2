@@ -4,9 +4,14 @@
     // Dependencies
     //==========
 const express = require('express');
+const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 const app = express();
 require('dotenv').config();
-const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const router = require('./controllers/userRoutes');
+
+
 
 // How to connect to the database either
 // via heroku or locally
@@ -16,6 +21,10 @@ const MONGODB_URI = process.env.MONGODB_URI;
     //Port Set Variable
     //============
 const PORT = process.env.PORT;
+
+    //Use Public Directory
+    //===============
+app.use(express.static("public"));
 
     //Database connection
     //==============
@@ -56,14 +65,30 @@ app.listen(PORT, () => {
     //================================
 app.use(express.urlencoded({ extended: false }));
 
+    //parse JSON Data
+    //============
+app.use(express.json());
+
+const userController = require('./controllers/userRoutes.js');
+app.use(userController);
 
 //=============================
 //========= ROUTES ============
 //=============================
 
         //========================
-        //===== Index / GET ==========
+        //===== Index / GET =========
         //========================
+
+    //      bcrypt.genSalt().then(salt => {
+    //        bcrypt.hash("password", salt).then(hash => {
+    //            bcrypt.compare("password", hash).then(result => console.log(result));
+    //        });
+    //    });
+
+        app.get("/planIt", (req,res) => {
+            res.render("index.ejs", {})
+        });
 
         //========================
         //===== New / GET ==========
@@ -80,6 +105,14 @@ app.use(express.urlencoded({ extended: false }));
         //========================
         //===== Create / POST =======
         //========================
+    //     router.post("/users", async (req, res) => {
+    //         bcrypt.genSalt().then(salt => {
+    //         bcrypt.hash("password", salt).then(hash => {
+    //             bcrypt.compare("password", hash).then(result => console.log(result));
+    //        });
+    //    });
+    // console.log(JSON.parse(JSON.stringify(req.body)));
+    //     })
 
         //========================
         //===== Update / PUT ========
