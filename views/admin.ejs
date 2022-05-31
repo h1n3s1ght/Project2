@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs") %>
+    <title>New User Questionaire</title>
+    <title>Document</title>
+</head>
+<body id="admin">
+    <% users.forEach(users => { %>
+    <table>
+    <tr>
+   <td><%=users.lName%>, <%= users.fName%> </td>
+   </tr>
+   <tr>
+   <td> <%=users.email%></td>
+   </tr>
+    <tr>
+   <td> <%=users.id%></td>
+   </tr> </table>
+   <% }) %>
+</body>
+</html>

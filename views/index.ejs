@@ -6,6 +6,8 @@
     <!-- Script for Password Verification -->
     <!-- ================================ -->
     <script>
+        //Hide the submit button at load
+        //=====================
         window.onload = function() {
             document.getElementById("verifySubmit").style.visibility = "hidden";
         }
@@ -36,7 +38,7 @@
 </head>
 <body id="index">
 
-<!-- Main Modal holding the "sign-up" and "sign-in" modals -->
+    <!-- Main Modal holding the "sign-up" and "sign-in" modals -->
     <!-- ===================================================== -->
     <div class="container" id="mainModal">
         <h2>Welcome to PlanIt Traveling</h2>
@@ -50,7 +52,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Sign-Up</h3>
-                        <form>
+                        <form  action="/users" method="POST">
                             <label>First Name:<br />
                             <input type="text" name="fName" id="fName" required> </label>
 
@@ -88,7 +90,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Sign-In</h3>
-                        <form>
+                        <form action='/dashboard/<%=users.id%>' method="POST">
                             <label for="email">Username (email):</label>
                             <input type="email" id="email"> <br />
 

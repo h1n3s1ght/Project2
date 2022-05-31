@@ -80,45 +80,6 @@ app.use(userController);
         //===== Index / GET =========
         //========================
 
-    //      bcrypt.genSalt().then(salt => {
-    //        bcrypt.hash("password", salt).then(hash => {
-    //            bcrypt.compare("password", hash).then(result => console.log(result));
-    //        });
-    //    });
-
         app.get("/planIt", (req,res) => {
             res.render("index.ejs", {})
         });
-
-        //========================
-        //===== New / GET ==========
-        //========================
-
-        //========================
-        //===== Show / GET ==========
-        //========================
-
-        //========================
-        //===== Edit / GET ===========
-        //========================
-
-        //========================
-        //===== Create / POST =======
-        //========================
-    //     router.post("/users", async (req, res) => {
-    //         bcrypt.genSalt().then(salt => {
-    //         bcrypt.hash("password", salt).then(hash => {
-    //             bcrypt.compare("password", hash).then(result => console.log(result));
-    //        });
-    //    });
-    // console.log(JSON.parse(JSON.stringify(req.body)));
-    //     })
-
-        //========================
-        //===== Update / PUT ========
-        //========================
-
-        //=========================
-        //===== Destroy / DELETE ======
-        //=========================
-
