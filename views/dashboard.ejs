@@ -4,7 +4,38 @@
     <%- include("./partials/head.ejs") %>
     <title>Dashboard</title>
 </head>
-<body>
-    Welcome to the Dashboard!
+<body id="dashboard">
+    <header class="dashHeader">
+        <%- include("./partials/header.ejs") %>
+        <h2> Welcome to your <strong> PlanIt Dashboard</strong></h2>
+    </header>
+    <div class="dashLayout">
+        <div class="dashContainer">
+            <div id="locations">
+                <div  class="locations">
+
+                </div>
+                <div class="map">
+                    
+                </div>
+            </div>
+            <div id="standard">
+            <div class="dates">
+
+            </div>
+            <div class="weather">
+
+            </div>
+            </div>
+            <div id="entertainment">
+            <div class="events">
+
+            </div>
+            <div class="housing">
+
+            </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

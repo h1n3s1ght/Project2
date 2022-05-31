@@ -71,15 +71,3 @@ app.use(express.json());
 
 const userController = require('./controllers/userRoutes.js');
 app.use(userController);
-
-//=============================
-//========= ROUTES ============
-//=============================
-
-        //========================
-        //===== Index / GET =========
-        //========================
-
-        app.get("/planIt", (req,res) => {
-            res.render("index.ejs", {})
-        });

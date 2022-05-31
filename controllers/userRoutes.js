@@ -1,97 +1,108 @@
 //============================
 //======== VARIABLES =========
 //============================
-    // Dependencies
-    //==========
+// Dependencies
+//==========
 const bcrypt = require("bcrypt");
 const express = require("express");
 const Users = require("../models/users");
 const router = express.Router();
-const mongoose = require('mongoose');
-
-
-
+const mongoose = require("mongoose");
 
 //=============================
 //========= ROUTES ============
 //=============================
 
-        //========================
-        //===== Index / GET =========
-        //========================
+//========================
+//===== Index / GET =========
+//========================
 
-router.get('/admin', (req,res) => {
-   Users.find({}, (error, allUsers) => {
-    res.render('admin.ejs',{users: allUsers,});
+router.get("/planIt", (req, res) => {
+  Users.find({}, (error, allUsers) => {
+    res.render("index.ejs", { users: allUsers });
+  });
 });
+
+router.get("/admin", (req, res) => {
+  Users.find({}, (error, allUsers) => {
+    res.render("admin.ejs", { users: allUsers });
+  });
 });
 
-    router.get("/questionaire", (req, res) =>{
-        res.render('newUser.ejs')
-    })
-         //========================
-        //===== New / GET ==========
-        //========================
+router.get("/dashboard", (req, res) => {
+  res.render("dashboard.ejs", { users: Users });
+});
 
-router.get('/users/new', (req, res) => {
-        console.log(req.body);
+router.get("/questionaire", (req, res) => {
+  res.render("newUser.ejs");
+});
+//========================
+//===== New / GET ==========
+//========================
+
+router.get("/users/new", (req, res) => {
+  console.log(req.body);
+});
+
+//========================
+//===== Show / GET ==========
+//========================
+router.get("/dashboard/:id", (req, res) => {
+  Users.findById(req.params.id, (err, foundUsers) => {
+    res.render("dashboard.ejs", {
+      users: foundUsers,
     });
-
-        //========================
-        //===== Show / GET ==========
-        //========================
-router.get('/dashboard/:id', (req,res)=>{
-    Users.findById(req.params.id, (err, foundUsers) =>{
-        res.render('dashboard.ejs', {
-           users: foundUsers,
-        });
-    });
+  });
 });
-        //========================
-        //===== Edit / GET ===========
-        //========================
+//========================
+//===== Edit / GET ===========
+//========================
+router.get("/users/:id/edit", (req, res) => {
+  Users.findById(req.params.id, (err, foundUsers) => {
+    res.render("dashboard.ejs", { users: foundUsers });
+  });
+});
+//========================
+//===== Create / POST =======
+//========================
 
-        //========================
-        //===== Create / POST =======
-        //========================
-
-        //Encrypt the users iniatial password
-        //========================
+//Encrypt the users iniatial password
+//========================
 router.post("/users", async (req, res) => {
-    Users.create(req.body, async (error, createdUsers) =>{
-        const body = req.body;
-        const user = new Users(body);
-        const salt = await bcrypt.genSaltSync(12);
-        console.log(salt);
-        user.password = await bcrypt.hash(user.password, salt);
-    })
+  const body = req.body;
+  const user = new Users(body);
+  const salt = await bcrypt.genSaltSync(6);
+  console.log(salt);
+  user.password = await bcrypt.hash(user.password, salt);
+  user.save().then((doc) => res.status(201).send(doc));
+  console.log(JSON.parse(JSON.stringify(user)));
 });
 
-        //Verify the encrypted data pulled from DB matches
-        // user's new input as a Boolean
-        //=====================
-router.post("/dashboard/:id", async (req, res) => {
+//Verify the encrypted data pulled from DB matches
+// user's new input as a Boolean
+//=====================
+router.post("/dashboard", async (req, res) => {
   const form = req.body;
   const userInfo = await Users.findOne({ email: form.email });
   if (userInfo) {
-    const verifyPassword = await bcrypt.compare(form.password, userInfo.password);
-    if (verifyPassword) {
-      res.status(200).json({ message: "That is the correct password." });
-    } else {
-      res.status(400).json({ message: "The is incorrect. Please try again." });
-    }
-  } else {
-    res.status(401).json({ message: "User do not appear in our system. Please use the Sign-Up option." });
+    try {
+      const samePass = await bcrypt.compareSync(form.password, userInfo.password);
+      console.log(samePass);
+      if (samePass === true) {
+        res.redirect(`/dashboard/${userInfo.id}`);
+      } else {
+        alert("Something doesn't match our records.  Please try again.");
+      }
+    } catch {}
   }
 });
 
+//========================
+//===== Update / PUT ========
+//========================
 
-        //========================
-        //===== Update / PUT ========
-        //========================
-
-        //=========================
-        //===== Destroy / DELETE ======
-        //=========================
+//=========================
+//===== Destroy / DELETE ======
+//=========================
 
 module.exports = router;

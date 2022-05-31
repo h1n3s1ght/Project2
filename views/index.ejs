@@ -68,17 +68,15 @@
                             <label> Verify Password:<br />
                             <input type="password" id="password2"></label>
 
-                            <button type="button" onclick="verifyPass()" id="verifyPassword">Verify Passwords Match </button>
+                            <button type="button" class="btn-secondary" onclick="verifyPass()" id="verifyPassword">Verify Passwords Match </button>
 
                             <!-- Hidden Submit Until Passwords Match -->
                             <!-- =================================== -->
-                            <button type="submit" id="verifySubmit"> Submit </button>
+                            <button type="submit" class="btn-secondary" id="verifySubmit"> Submit </button>
                         </form>
                     </div>
                     <div class="modal-body"></div>
-                    <div class="modal-footer"></div>
                 </div>
-
             </div>
         </div>
 
@@ -90,22 +88,20 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Sign-In</h3>
-                        <form action='/dashboard/<%=users.id%>' method="POST">
+                        <form action="/dashboard" method="POST">
                             <label for="email">Username (email):</label>
                             <input type="email" id="email"> <br />
 
                             <label for="password">Password:</label>
                             <input type="password" id="password"> <br />
 
-                            <button type="submit">Sign-In</button>
+                            <button class="btn-secondary" type="submit">Sign-In</button>
                         </form>
                     </div>
-                    <div class="modal-body"></div>
-                    <div class="modal-footer"></div>
+                        <div class="modal-body">
+                        </div>
                 </div>
-
             </div>
-        </div>
         </div>
     </div>
 
