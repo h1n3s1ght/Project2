@@ -2,39 +2,14 @@
 <html lang="en">
 <head>
     <%- include("./partials/head.ejs") %>
-    
-    <!-- Script for Password Verification -->
-    <!-- ================================ -->
-    <script>
-        //Hide the submit button at load
-        //=====================
-        window.onload = function() {
-            document.getElementById("verifySubmit").style.visibility = "hidden";
-        }
-
-        // Make Submit Visible and Verification Hidden
-        // ===========================================
-
-        function hideAndSeek() {
-            document.getElementById("verifySubmit").style.visibility = "visible";
-            document.getElementById("verifyPassword").style.visibility = "hidden";
-        }
-
-        function verifyPass() {
-            let pass1 = document.getElementById("password").value;
-            let pass2 = document.getElementById("password2").value;
-            if (pass1.length >= 4 && pass1.length <= 15) {
-                if (pass1 != pass2) {
-                    alert("Passwords did not match. Please correct this before submitting.");
-                } else {
-                    hideAndSeek();
-                }
-            } else {
-                alert('Password must be between 4 and 15 characters.');
-            }
-        }
-    </script>
     <title>Welcome to PlanIt Traveling</title>
+    <script>
+         //Hide the submit button at load
+        //=====================
+window.onload = function () {
+  document.getElementById("verifySubmit").style.visibility = "hidden";
+};
+    </script>
 </head>
 <body id="index">
 

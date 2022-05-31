@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <%- include("./partials/head.ejs") %>
     <title>New User Questionaire</title>
-</head>
-<body id="questionaire">
-    <header>
-        <nav>
-            <a href="#"><li>
-            Previous
-            </li></a>
-            <li>
-                |
-            </li>
-            <a href="#"><li>
-            Next
-            </li></a>
-        </nav>
+  </head>
+  <body id="questionaire">
+    <header class="newUserHeader">
+      <h3>| New User Questionnaire |</h3>
+      <nav>
+        <a href="#"><li>Previous</li></a>
+        <a href="#" onclick="nextQuestion(); return false;"><li>Next</li></a>
+      </nav>
     </header>
-    
-</body>
+    <div class="container">
+      <form>
+        <div class="question1" >
+            <h3>What kinds of activities do you like to do on vacation?</h3>
+            <h5>(Select the option that best matches)</h5>
+            <select multiple>
+                <option value="tour">Tours</option>
+                <option value="hiking">Hiking</option>
+                <option value="museum">Museums</option>
+                <option value="dining">Fine Dining</option>
+                <option value="club">Clubs</option>
+                <option value="concert">Concerts</option>
+                <option value="sport">Sporting Events</option>
+                <option value="relax">Relax Poolside or Beachside</option>
+                <option value="other">None of these... </option>
+            </select>
+        </div>
+        <div class="question2" id="map iterate">Map</div>
+        <div class="question3" id="iterate">Start Date: <br/> End Date:</div>
+        <div class="question4" id="iterate">Budget:</div>
+        <div class="question5" id="iterate"></div>
+      </form>
+    </div>
+  </body>
 </html>

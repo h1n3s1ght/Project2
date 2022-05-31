@@ -33,7 +33,7 @@ router.get("/dashboard", (req, res) => {
   res.render("dashboard.ejs", { users: Users });
 });
 
-router.get("/questionaire", (req, res) => {
+router.get("/users", (req, res) => {
   res.render("newUser.ejs");
 });
 //========================
@@ -76,6 +76,7 @@ router.post("/users", async (req, res) => {
   user.password = await bcrypt.hash(user.password, salt);
   user.save().then((doc) => res.status(201).send(doc));
   console.log(JSON.parse(JSON.stringify(user)));
+  res.redirect("/users");
 });
 
 //Verify the encrypted data pulled from DB matches

@@ -13,6 +13,7 @@ const router = require('./controllers/userRoutes');
 
 
 
+
 // How to connect to the database either
 // via heroku or locally
 //===========================
@@ -25,6 +26,7 @@ const PORT = process.env.PORT;
     //Use Public Directory
     //===============
 app.use(express.static("public"));
+app.use(express.static("models"));
 
     //Database connection
     //==============

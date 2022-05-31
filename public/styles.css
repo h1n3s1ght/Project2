@@ -2,18 +2,6 @@ html {
     font-family: "Futura", Arial, Helvetica, sans-serif;
     width: 100%;
 }
-
-#index {
-background-image: url(https://i.imgur.com/vsI12Pl.jpg);
-background-repeat: no-repeat;
-background-size: 100%;
--webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
 .container {
     font-family: "Futura", Arial, Helvetica, sans-serif;
     text-align: center;
@@ -146,6 +134,24 @@ width: 100%;
  font-family: "futura", Arial, Helvetica, sans-serif;
 }
 
+.newUserHeader {
+   display:flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+ font-family: "futura", Arial, Helvetica, sans-serif;
+ background-color: tan;
+}
+
+.newUserHeader nav {
+  justify-content: center;
+  width: 50%;
+}
+
+.newUserHeader h3 {
+  width: 25%;
+}
+
 .dashHeader h2 {
   width: 50%;
   font-size: 1.55em;
@@ -186,7 +192,7 @@ nav li:hover {
   color: beige;
 }
 
-#locations, #entertainment, #standard{
+#locations, #entertainment, #standard, #index{
   background-repeat: no-repeat;
   background-size: 100%;
   -webkit-background-size: cover;
@@ -209,4 +215,7 @@ nav li:hover {
 }
 #entertainment {
   background-image: url(https://i.imgur.com/gWcHVdp.jpg);
+}
+#index {
+background-image: url(https://i.imgur.com/vsI12Pl.jpg);
 }
