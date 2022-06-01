@@ -2,12 +2,11 @@ html {
     font-family: "Futura", Arial, Helvetica, sans-serif;
     width: 100%;
 }
-.container {
+.container, .container2 {
     font-family: "Futura", Arial, Helvetica, sans-serif;
     text-align: center;
     width: 40%;
     margin-left: 29%;
-    margin-top: 25%;
     padding-bottom: 1%;
     display: flex;
     background-color: beige;
@@ -19,6 +18,14 @@ html {
               -1px -1px 10px #635D5C,
               1px -1px 10px #635D5C,
               -1px 1px 10px #635D5C;
+}
+
+.container {
+  margin-top: 25%;
+}
+
+.container2 {
+  margin-top: 15%;
 }
 
 .modal-header h3 {

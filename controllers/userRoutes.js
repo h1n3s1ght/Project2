@@ -76,7 +76,7 @@ router.post("/users", async (req, res) => {
   user.password = await bcrypt.hash(user.password, salt);
   user.save().then((doc) => res.status(201).send(doc));
   console.log(JSON.parse(JSON.stringify(user)));
-  res.redirect("/users");
+  res.redirect(`/users`);
 });
 
 //Verify the encrypted data pulled from DB matches
@@ -85,9 +85,10 @@ router.post("/users", async (req, res) => {
 router.post("/dashboard", async (req, res) => {
   const form = req.body;
   const userInfo = await Users.findOne({ email: form.email });
+  console.log(form);
   if (userInfo) {
     try {
-      const samePass = await bcrypt.compareSync(form.password, userInfo.password);
+      const samePass = bcrypt.compareSync(form.password, userInfo.password);
       console.log(samePass);
       if (samePass === true) {
         res.redirect(`/dashboard/${userInfo.id}`);

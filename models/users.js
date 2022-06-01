@@ -16,6 +16,7 @@ const UserSchema = new mongoose.Schema({
     locations: {type: String, required: false},
     arriveDate: {type: String, required: false},
     leaveDate: {type: String, required: false},
+    activities: {type: String, required: false},
 });
 
 //Usable Const in server.js

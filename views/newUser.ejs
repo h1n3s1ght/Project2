@@ -3,21 +3,29 @@
   <head>
     <%- include("./partials/head.ejs") %>
     <title>New User Questionaire</title>
+    <script>
+        //All but the first Div hidden at
+        //the load of the screen
+         //==================
+    window.onload = function () { 
+        $("div .iterate").fadeOut(1);
+    }
+    </script>
   </head>
   <body id="questionaire">
     <header class="newUserHeader">
       <h3>| New User Questionnaire |</h3>
       <nav>
-        <a href="#"><li>Previous</li></a>
-        <a href="#" onclick="nextQuestion(); return false;"><li>Next</li></a>
+        <a href="" onclick="prevQuestion(); return false;"><li>Previous</li></a>
+        <a href="" onclick="nextQuestion(); return false;"><li>Next</li></a>
       </nav>
     </header>
-    <div class="container">
+    <div class="container2">
       <form>
-        <div class="question1" >
+        <div class="1" >
             <h3>What kinds of activities do you like to do on vacation?</h3>
             <h5>(Select the option that best matches)</h5>
-            <select multiple>
+            <select multiple name="activities">
                 <option value="tour">Tours</option>
                 <option value="hiking">Hiking</option>
                 <option value="museum">Museums</option>
@@ -29,10 +37,21 @@
                 <option value="other">None of these... </option>
             </select>
         </div>
-        <div class="question2" id="map iterate">Map</div>
-        <div class="question3" id="iterate">Start Date: <br/> End Date:</div>
-        <div class="question4" id="iterate">Budget:</div>
-        <div class="question5" id="iterate"></div>
+        <div class="2 iterate">
+            <h3>Where would you like to travel to next?</h3>
+             <h5>(Just one for now... we can add more later)</h5>
+
+        </div>
+        <div class="3 iterate">
+            <h3>When are you planning to travel?</h3>
+             <h5>(Don't worry this can be changed later)</h5>
+            <label>Start Date:<input type="date"name="arriveDate"></label>
+            <br/> 
+            <label>End Date:<input type="date"name="leaveDate"></label>
+            <br/> 
+        </div>
+        <div class="4 iterate">Budget:</div>
+        <div class="5 iterate"><input type="button" value="submit" </div>
       </form>
     </div>
   </body>

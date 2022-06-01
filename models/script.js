@@ -42,19 +42,21 @@ function verifyPass() {
     //All but the first Div hidden at
     //the load of the screen
     //==================
-    window.onload = function () { 
-        document.getElementById("iterate").style.visibility = "hidden";
-    };
+
     //Filter through Questions
     //=================
+  var next = 1;
 function nextQuestion() {
-    var next = 1;
-    document.getElementsByClassName(`question${next+1}`).style.visibility = "visible";
-       document.getElementsByClassName(`question${next}`).style.visibility = "hidden";
-       next++;
+    $(`div .${next}`).fadeOut(1000);
+    $(`div .${next + 1}`).fadeIn(2000);
+    next++;
 }
 
-function prevQuestion() {}
+function prevQuestion() {
+     $(`div .${next}`).fadeOut(200);
+    $(`div .${next - 1}`).fadeIn(200);
+    next--;
+}
 
     //Setup the map element
     //=================
