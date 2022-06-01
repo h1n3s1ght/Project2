@@ -47,16 +47,64 @@ function verifyPass() {
     //=================
   var next = 1;
 function nextQuestion() {
-    $(`div .${next}`).fadeOut(1000);
-    $(`div .${next + 1}`).fadeIn(2000);
-    next++;
+    if(next < 5){
+        $(`div .${next}`).fadeOut(200);
+        $(`div .${next + 1}`).fadeIn(200);
+        next++;
+    } else {
+        return;
+    }
 }
 
 function prevQuestion() {
-     $(`div .${next}`).fadeOut(200);
-    $(`div .${next - 1}`).fadeIn(200);
-    next--;
+    if (next > 1){
+        $(`div .${next}`).fadeOut(200);
+        $(`div .${next - 1}`).fadeIn(200);
+        next--;
+    } else {
+        return;
+    }
 }
 
     //Setup the map element
     //=================
+
+    //From Google Maps
+    //==============
+
+let autocomplete = new google.maps.places.Autocomplete(input, options);
+function initAutocomplete(){
+    autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById("autocomplete"),
+        {
+            types: ["locality"],
+            componentRestrictions: {'country': ["US"]},
+            fields: ['place_id', 'geometry', 'name']
+        });
+        autocomplete.addListener('place_changed', onPlaceChanged);
+}
+
+function onPlaceChanged(){
+    let newPlace = autocomplete.getPlace();
+    if(!place.geometry){
+        document.getElementById('autocomplete').placeholder = 'Enter a place'
+    } else {
+        document.getElementById('details').innerHTML = newPlace.name;
+    }}
+
+const center = { lat: 50.064192, lng: -130.605469 };
+// Create a bounding box with sides ~10km away from the center point
+const defaultBounds = {
+  north: center.lat + 0.1,
+  south: center.lat - 0.1,
+  east: center.lng + 0.1,
+  west: center.lng - 0.1,
+};
+const input = document.getElementById("pac-input");
+const options = {
+  bounds: defaultBounds,
+  componentRestrictions: { country: "us" },
+  fields: ["address_components", "geometry", "icon", "name"],
+  strictBounds: false,
+  types: ["establishment"],
+};

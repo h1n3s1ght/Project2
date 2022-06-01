@@ -4,15 +4,15 @@
     <%- include("./partials/head.ejs") %>
     <title>New User Questionaire</title>
     <script>
-        //All but the first Div hidden at
-        //the load of the screen
-         //==================
-    window.onload = function () { 
+      //All but the first Div hidden at
+      //the load of the screen
+      //==================
+      window.onload = function () {
         $("div .iterate").fadeOut(1);
-    }
+      };
     </script>
   </head>
-  <body id="questionaire">
+  <body id="questionnaire">
     <header class="newUserHeader">
       <h3>| New User Questionnaire |</h3>
       <nav>
@@ -22,36 +22,55 @@
     </header>
     <div class="container2">
       <form>
-        <div class="1" >
-            <h3>What kinds of activities do you like to do on vacation?</h3>
-            <h5>(Select the option that best matches)</h5>
-            <select multiple name="activities">
-                <option value="tour">Tours</option>
-                <option value="hiking">Hiking</option>
-                <option value="museum">Museums</option>
-                <option value="dining">Fine Dining</option>
-                <option value="club">Clubs</option>
-                <option value="concert">Concerts</option>
-                <option value="sport">Sporting Events</option>
-                <option value="relax">Relax Poolside or Beachside</option>
-                <option value="other">None of these... </option>
-            </select>
+        <div class="1">
+          <h3>What kinds of activities do you like to do on vacation?</h3>
+          <h5>(Select the option that best matches)</h5>
+          <select multiple name="activities">
+            <option value="tour">Tours</option>
+            <option value="hiking">Hiking</option>
+            <option value="museum">Museums</option>
+            <option value="dining">Fine Dining</option>
+            <option value="club">Clubs</option>
+            <option value="concert">Concerts</option>
+            <option value="sport">Sporting Events</option>
+            <option value="relax">Relax Poolside or Beachside</option>
+            <option value="other">None of these...</option>
+          </select>
         </div>
         <div class="2 iterate">
-            <h3>Where would you like to travel to next?</h3>
-             <h5>(Just one for now... we can add more later)</h5>
-
+          <h3>Where would you like to travel to next?</h3>
+          <h5>(Just one for now... we can add more later)</h5>
+          <input
+            id="autocomplete"
+            class="AutocompleteServices"
+            type="text"
+            placeholder="Enter a city"
+          />
+          <div id="map"></div>
         </div>
         <div class="3 iterate">
-            <h3>When are you planning to travel?</h3>
-             <h5>(Don't worry this can be changed later)</h5>
-            <label>Start Date:<input type="date"name="arriveDate"></label>
-            <br/> 
-            <label>End Date:<input type="date"name="leaveDate"></label>
-            <br/> 
+          <h3>When are you planning to travel?</h3>
+          <h5>(Don't worry this can be changed later)</h5>
+          <label>Start Date:<input type="date" name="arriveDate" /></label>
+          <br />
+          <label>End Date:<input type="date" name="leaveDate" /></label>
+          <br />
         </div>
-        <div class="4 iterate">Budget:</div>
-        <div class="5 iterate"><input type="button" value="submit" </div>
+        <div class="4 budget iterate">
+          <h3>What is your budget for the trip?</h3>
+          <h5>
+            (This helps us offer you resources within your budget. If you dont
+            care to share please leave blank.)
+          </h5>
+          <label
+            >$<input name="budget" type="number" placeholder="1000"
+          /></label>
+        </div>
+        <div class="5 qSubmit iterate">
+          <h3>Are you ready to get some plans for your trip?</h3>
+          <h5>(Submit your form and we will work on what comes next.)</h5>
+          <input type="button" value="Let's PlanIt" />
+        </div>
       </form>
     </div>
   </body>

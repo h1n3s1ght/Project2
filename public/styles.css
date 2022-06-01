@@ -151,12 +151,22 @@ width: 100%;
 }
 
 .newUserHeader nav {
-  justify-content: center;
+  justify-content: right;
+  text-align: center;
   width: 50%;
 }
 
 .newUserHeader h3 {
-  width: 25%;
+  width: 50%;
+}
+
+.newUserHeader a, .newUserHeader li {
+  width: 33%;
+  text-decoration: none;
+}
+
+.budget input, .qSubmit input {
+  width: 80%;
 }
 
 .dashHeader h2 {
@@ -179,7 +189,7 @@ nav {
  padding: 2% 0%;
 }
 
-nav li , nav a{
+nav li , nav a , .qSubmit input{
   font-size: .95em;
   width: 25%;
   text-decoration: none;
@@ -192,14 +202,18 @@ nav li {
   width: 100%;
   padding: 2px;
 }
+.qSubmit input {
+  border-radius: 15px;
+  color: black;
+}
 
-nav li:hover {
+nav li:hover, .qSubmit input:hover {
   border-radius: 15px;
   background-color: black;
   color: beige;
 }
 
-#locations, #entertainment, #standard, #index{
+#locations, #entertainment, #standard, #index, #questionnaire{
   background-repeat: no-repeat;
   background-size: 100%;
   -webkit-background-size: cover;
@@ -225,4 +239,90 @@ nav li:hover {
 }
 #index {
 background-image: url(https://i.imgur.com/vsI12Pl.jpg);
+}
+
+#questionnaire {
+  background-image: url(https://i.imgur.com/AKtCQ7j.jpg);
+}
+
+
+/*=============== */
+/* Google Map Styling */
+/*================*/
+#map {
+  height: 100%;
+}
+
+#description {
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#infowindow-content .title {
+  font-weight: bold;
+}
+
+#infowindow-content {
+  display: none;
+}
+
+#map #infowindow-content {
+  display: inline;
+}
+
+.pac-card {
+  background-color: #fff;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  padding: 0 0.5em;
+  font: 400 18px Roboto, Arial, sans-serif;
+  overflow: hidden;
+  font-family: Roboto;
+  padding: 0;
+}
+
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
+
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+
+.pac-controls label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+#target {
+  width: 345px;
 }
