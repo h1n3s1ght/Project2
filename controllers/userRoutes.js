@@ -9,6 +9,11 @@ const Users = require("../models/users");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+
+    //Utilize the Method Override Features
+    //===========================
+router.use(methodOverride("_method"));
 
 //=============================
 //========= ROUTES ============
@@ -41,7 +46,15 @@ router.get('/users/new', (req, res) => {
 //========================
 //===== Show / GET ==========
 //========================
-router.get('/users/:id', (req,res)=>{
+router.get('/users/:id', (req, res) => {
+  Users.findById(req.params.id, (err, foundUser) =>{
+        res.render('newUser.ejs', {
+          user: foundUser
+        });
+  });
+    });
+
+router.get('/dashboard/:id', (req,res)=>{
     Users.findById(req.params.id, (err, foundUser) =>{
         res.render('dashboard.ejs', {
             user: foundUser,
@@ -68,12 +81,11 @@ router.post('/users/new', async (req,res)=> {
   console.log(salt);
   body.password = await bcrypt.hash(body.password, salt);
     Users.create(body, async (error, user)=> {
-      // user.password = await bcrypt.hash(user.password, salt);
       console.log(JSON.parse(JSON.stringify(user)));
       newUserID = JSON.parse(JSON.stringify(user._id));
       console.log(newUserID);
+      res.redirect(`/users/${newUserID}`);
     });
-    res.redirect("/users/new");
 });
 
 //Verify the encrypted data pulled from DB matches
@@ -88,7 +100,7 @@ router.post("/users", async (req, res) => {
       const samePass = bcrypt.compareSync(form.password, userInfo.password);
       console.log(samePass);
       if (samePass === true) {
-        res.redirect(`/users/${userInfo._id}`);
+        res.redirect(`/dashboard/${userInfo._id}`);
       } else {
         alert("Something doesn't match our records.  Please try again.");
       }
@@ -101,10 +113,12 @@ router.post("/users", async (req, res) => {
 //========================
 
 router.put('/users/:id', (req, res) => {
-Inventory.findByIdAndUpdate(req.params.id, req.body, {
+Users.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
-}, (error, updatedInventory) => {
-    res.redirect(`http://localhost:3000/inventory/${req.params.id}`);
+}, (error, updatedUsers) => {
+   //Redirect to user Dashboard page after update completes
+   console.log(updatedUsers);
+    res.redirect(`/dashboard/${updatedUsers.id}`);
 })
 });
 
@@ -114,7 +128,7 @@ Inventory.findByIdAndUpdate(req.params.id, req.body, {
 
 router.delete('/users/:id', (req, res) => {
         //Select the item by id and remove only one item
-    Users.findByIdAndDelete(req.params.id, (err, data) => {
+    Users.findByIdAndDelete(req.params._id, (err, data) => {
          //Redirect back to home page after delete completes
     res.redirect('/planIt');
     });

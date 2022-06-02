@@ -22,7 +22,7 @@
       </nav>
     </header>
     <div class="container2">
-      <form>
+      <form action="/users/<%=JSON.parse(JSON.stringify(user.id))%>?_method=PUT" method="POST">
         <div class="1">
           <h3>What kinds of activities do you like to do on vacation?</h3>
           <h5>(Select the option that best matches)</h5>
@@ -74,7 +74,7 @@
         <div class="5 qSubmit iterate">
           <h3>Are you ready to get some plans for your trip?</h3>
           <h5>(Submit your form and we will work on what comes next.)</h5>
-          <input type="button" value="Let's PlanIt" />
+          <button type="submit">Let's PlanIt! </button>
         </div>
       </form>
     </div>
