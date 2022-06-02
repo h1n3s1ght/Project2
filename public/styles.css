@@ -245,6 +245,10 @@ background-image: url(https://i.imgur.com/vsI12Pl.jpg);
   background-image: url(https://i.imgur.com/AKtCQ7j.jpg);
 }
 
+.iterate h5 {
+  margin-bottom: 5%;
+}
+
 
 /*=============== */
 /* Google Map Styling */

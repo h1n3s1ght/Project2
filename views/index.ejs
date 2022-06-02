@@ -6,9 +6,9 @@
     <script>
          //Hide the submit button at load
         //=====================
-window.onload = function () {
-  document.getElementById("verifySubmit").style.visibility = "hidden";
-};
+    window.onload = function () {
+         $("#verifySubmit").fadeOut(1);
+    };
     </script>
 </head>
 <body id="index">
@@ -27,7 +27,7 @@ window.onload = function () {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Sign-Up</h3>
-                        <form  action="/users" method="POST">
+                        <form  id="twoActions" action="/questionnaire" method="GET" onsubmit="javascript: return submitForm();">
                             <label>First Name:<br />
                             <input type="text" name="fName" id="fName" required> </label>
 
@@ -47,7 +47,7 @@ window.onload = function () {
 
                             <!-- Hidden Submit Until Passwords Match -->
                             <!-- =================================== -->
-                            <button type="submit" class="btn-secondary" id="verifySubmit"> Submit </button>
+                            <button type="submit" class="btn-secondary" id="verifySubmit" onclick="submit1()"> Submit </button>
                         </form>
                     </div>
                     <div class="modal-body"></div>

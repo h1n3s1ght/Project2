@@ -8,6 +8,7 @@ const express = require("express");
 const Users = require("../models/users");
 const router = express.Router();
 const mongoose = require("mongoose");
+const bodyParser = require('body-parser');
 
 //=============================
 //========= ROUTES ============
@@ -29,30 +30,23 @@ router.get("/admin", (req, res) => {
   });
 });
 
-router.get("/dashboard", (req, res) => {
-  res.render("dashboard.ejs", { users: Users });
-});
-
-router.get("/users", (req, res) => {
-  res.render("newUser.ejs");
-});
 //========================
 //===== New / GET ==========
 //========================
-
-router.get("/users/new", (req, res) => {
-  console.log(req.body);
-});
+router.get('/users/new', (req, res) => {
+        res.render('newUser.ejs', ({Users}));
+        console.log(req.body);
+    });
 
 //========================
 //===== Show / GET ==========
 //========================
-router.get("/dashboard/:id", (req, res) => {
-  Users.findById(req.params.id, (err, foundUsers) => {
-    res.render("dashboard.ejs", {
-      users: foundUsers,
+router.get('/user/:id', (req,res)=>{
+    Users.findById(req.params.id, (err, foundUser) =>{
+        res.render('dashboard.ejs', {
+            user: foundUser,
+        });
     });
-  });
 });
 //========================
 //===== Edit / GET ===========
@@ -68,15 +62,18 @@ router.get("/users/:id/edit", (req, res) => {
 
 //Encrypt the users iniatial password
 //========================
-router.post("/users", async (req, res) => {
+router.post('/users/new', async (req,res)=> {
   const body = req.body;
-  const user = new Users(body);
   const salt = await bcrypt.genSaltSync(6);
   console.log(salt);
-  user.password = await bcrypt.hash(user.password, salt);
-  user.save().then((doc) => res.status(201).send(doc));
-  console.log(JSON.parse(JSON.stringify(user)));
-  res.redirect(`/users`);
+  body.password = await bcrypt.hash(body.password, salt);
+    Users.create(body, async (error, user)=> {
+      // user.password = await bcrypt.hash(user.password, salt);
+      console.log(JSON.parse(JSON.stringify(user)));
+      newUserID = JSON.parse(JSON.stringify(user._id));
+      console.log(newUserID);
+    });
+    res.redirect("/users/new");
 });
 
 //Verify the encrypted data pulled from DB matches
@@ -103,8 +100,26 @@ router.post("/dashboard", async (req, res) => {
 //===== Update / PUT ========
 //========================
 
+router.put('/users/:id', (req, res) => {
+Inventory.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+}, (error, updatedInventory) => {
+    res.redirect(`http://localhost:3000/inventory/${req.params.id}`);
+})
+});
+
 //=========================
 //===== Destroy / DELETE ======
 //=========================
+
+router.delete('/users/:id', (req, res) => {
+        //Select the item by id and remove only one item
+    Users.findByIdAndDelete(req.params.id, (err, data) => {
+         //Redirect back to home page after delete completes
+    res.redirect('/planIt');
+    });
+});
+
+
 
 module.exports = router;

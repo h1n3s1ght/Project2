@@ -9,6 +9,7 @@
       //==================
       window.onload = function () {
         $("div .iterate").fadeOut(1);
+        console.log(user._id)
       };
     </script>
   </head>
@@ -40,13 +41,17 @@
         <div class="2 iterate">
           <h3>Where would you like to travel to next?</h3>
           <h5>(Just one for now... we can add more later)</h5>
+
+          <h5>Your Location Selected:</h5>
+          <h5 id="mapInput"></h5> <br />
+
           <input
             id="autocomplete"
-            class="AutocompleteServices"
             type="text"
             placeholder="Enter a city"
+            name="locations"
           />
-          <div id="map"></div>
+          <!-- <div id="map"></div> -->
         </div>
         <div class="3 iterate">
           <h3>When are you planning to travel?</h3>

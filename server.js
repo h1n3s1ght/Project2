@@ -5,13 +5,17 @@
     //==========
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
 const methodOverride = require('method-override');
 const app = express();
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const router = require('./controllers/userRoutes');
 
-
+    //Use Public Directory
+    //===============
+app.use(express.static("public"));
+app.use(express.static("models"));
 
 
 // How to connect to the database either
@@ -22,11 +26,6 @@ const MONGODB_URI = process.env.MONGODB_URI;
     //Port Set Variable
     //============
 const PORT = process.env.PORT;
-
-    //Use Public Directory
-    //===============
-app.use(express.static("public"));
-app.use(express.static("models"));
 
     //Database connection
     //==============
@@ -63,9 +62,13 @@ app.listen(PORT, () => {
 //======= MIDDLEWARE ===========
 //==============================
 
+    //Utilize the Method Override Features
+    //===========================
+app.use(methodOverride("_method"));
+
     // Body parser middleware: it creates req.body
     //================================
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
     //parse JSON Data
     //============
@@ -73,3 +76,4 @@ app.use(express.json());
 
 const userController = require('./controllers/userRoutes.js');
 app.use(userController);
+app.use(router);
