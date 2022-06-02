@@ -27,7 +27,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Sign-Up</h3>
-                        <form  id="twoActions" action="/questionnaire" method="GET" onsubmit="javascript: return submitForm();">
+                        <form  id="twoActions" action="/users/new" method="POST">
                             <label>First Name:<br />
                             <input type="text" name="fName" id="fName" required> </label>
 
@@ -63,7 +63,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Sign-In</h3>
-                        <form action="/dashboard" method="POST">
+                        <form action="/users" method="POST">
                             <label for="email">Username (email):</label>
                             <input type="email" name="email" id="email"> <br />
 

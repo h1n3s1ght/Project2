@@ -3,28 +3,6 @@
 //============
 //        Scripts
 //============
-  //Two Function in Form
-  //================
-function submit1(){
-   //Write script to run POST method
-  document.forms["twoActions"].action = "/users/new";
-  document.forms["twoActions"].method = "POST";
-  document.getElementById["verifySubmit"].action.onclick();
-}
-function submit2(){
-   //Wrtie script to run GET method
-  document.forms["twoActions"].action = "/questionnaire";
-  document.forms["twoActions"].method = "GET";
-  document.getElementById["verifySubmit"].action.onclick();
-}
-
-function submitForm(){
-  submit1();
-  // submit2();
-}
-
-
-
     //Password Verification
     //================
     // Make Submit Visible and Verification Hidden

@@ -41,7 +41,7 @@ router.get('/users/new', (req, res) => {
 //========================
 //===== Show / GET ==========
 //========================
-router.get('/user/:id', (req,res)=>{
+router.get('/users/:id', (req,res)=>{
     Users.findById(req.params.id, (err, foundUser) =>{
         res.render('dashboard.ejs', {
             user: foundUser,
@@ -79,16 +79,16 @@ router.post('/users/new', async (req,res)=> {
 //Verify the encrypted data pulled from DB matches
 // user's new input as a Boolean
 //=====================
-router.post("/dashboard", async (req, res) => {
+router.post("/users", async (req, res) => {
   const form = req.body;
   const userInfo = await Users.findOne({ email: form.email });
-  console.log(form);
+  console.log(form.email);
   if (userInfo) {
     try {
       const samePass = bcrypt.compareSync(form.password, userInfo.password);
       console.log(samePass);
       if (samePass === true) {
-        res.redirect(`/dashboard/${userInfo.id}`);
+        res.redirect(`/users/${userInfo._id}`);
       } else {
         alert("Something doesn't match our records.  Please try again.");
       }
