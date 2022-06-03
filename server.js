@@ -79,6 +79,10 @@ app.use(express.json());
 
 app.use(router);
 
+router.get("/", (req,res) => {
+  res.redirect("/planIt");
+})
+
 app.use(Users);
 
 const userController = require('./controllers/userRoutes.js');
