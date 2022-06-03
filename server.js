@@ -79,7 +79,7 @@ app.use(express.json());
 
 app.use(router);
 
-router.get("/", (req,res) => {
+app.get("/", (req,res) => {
   res.redirect("/planIt");
 })
 
