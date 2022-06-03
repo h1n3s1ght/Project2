@@ -98,7 +98,7 @@ router.post('/users/new', async (req,res)=> {
   body.password = await bcrypt.hash(body.password, salt);
     Users.create(body, (error, user)=> {
       console.log(JSON.parse(JSON.stringify(user)));
-      newUserID = JSON.parse(JSON.stringify(user._id));
+      newUserID = user._id;
       console.log(newUserID);
       res.redirect(`/users/${newUserID}`);
     });
