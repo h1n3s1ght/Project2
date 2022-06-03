@@ -65,6 +65,10 @@ app.listen(PORT, () => {
     console.log('Server listening on port |', PORT);
     })
 
+app.get("/", (req,res) => {
+  res.redirect("/planIt");
+})
+
 //==============================
 //======= MIDDLEWARE ===========
 //==============================
@@ -80,10 +84,6 @@ app.use(express.urlencoded({ extended: false }));
     //parse JSON Data
     //============
 app.use(express.json());
-
-app.get("/", (req,res) => {
-  res.redirect("/planIt");
-})
 
 app.use(router);
 
