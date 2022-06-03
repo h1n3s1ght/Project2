@@ -62,6 +62,9 @@ app.listen(PORT, () => {
 //==============================
 //======= MIDDLEWARE ===========
 //==============================
+app.get("/planIt", (req,res) => {
+    res.render("index.ejs");
+})
 
     //Utilize the Method Override Features
     //===========================
