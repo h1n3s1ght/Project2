@@ -11,6 +11,7 @@ const app = express();
 require('dotenv').config();
 const bcrypt = require('bcrypt');
 const router = require('./controllers/userRoutes');
+const Users = require("./models/users")
 
     //Use Public Directory
     //===============
@@ -68,12 +69,14 @@ app.use(methodOverride("_method"));
 
     // Body parser middleware: it creates req.body
     //================================
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
     //parse JSON Data
     //============
 app.use(express.json());
 
+app.use(router);
+app.use(Users);
+
 const userController = require('./controllers/userRoutes.js');
 app.use(userController);
-app.use(router);

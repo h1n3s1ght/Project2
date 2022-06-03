@@ -13,13 +13,13 @@ const UserSchema = new mongoose.Schema({
     lName: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
-    locations: {type: String, required: false},
+    locations: {type: Array, required: false},
     locLat: {type: Number, required: false},
     locLng: {type: Number, required: false},
     budget: {type: Number, required: false},
     arriveDate: {type: String, required: false},
     leaveDate: {type: String, required: false},
-    activities: {type: String, required: false},
+    activities: {type: Array, required: false},
 });
 
 //Usable Const in server.js

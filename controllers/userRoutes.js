@@ -5,11 +5,12 @@
 //==========
 const bcrypt = require("bcrypt");
 const express = require("express");
-const Users = require("../models/users");
+const Users = require("../models/users.js");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const db = mongoose.connection;
 
     //Utilize the Method Override Features
     //===========================
@@ -33,6 +34,21 @@ router.get("/admin", (req, res) => {
   Users.find({}, (error, allUsers) => {
     res.render("admin.ejs", { users: allUsers });
   });
+});
+
+//========================
+//===== Update / PUT ========
+//========================
+
+router.put('/users/:id', (req, res) => {
+  console.log("went through server");
+Users.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+}, (error, updatedUsers) => {
+   //Redirect to user Dashboard page after update completes
+   console.log(updatedUsers.locations);
+    res.redirect(`/dashboard/${updatedUsers.id}`);
+})
 });
 
 //========================
@@ -84,7 +100,7 @@ router.post('/users/new', async (req,res)=> {
       console.log(JSON.parse(JSON.stringify(user)));
       newUserID = JSON.parse(JSON.stringify(user._id));
       console.log(newUserID);
-      res.redirect(`/users/${newUserID}`);
+      res.redirect(`http://localhost:3000/users/${newUserID}`);
     });
 });
 
@@ -100,26 +116,12 @@ router.post("/users", async (req, res) => {
       const samePass = bcrypt.compareSync(form.password, userInfo.password);
       console.log(samePass);
       if (samePass === true) {
-        res.redirect(`/dashboard/${userInfo._id}`);
+        res.redirect(`/dashboard/${userInfo.id}`);
       } else {
         alert("Something doesn't match our records.  Please try again.");
       }
     } catch {}
   }
-});
-
-//========================
-//===== Update / PUT ========
-//========================
-
-router.put('/users/:id', (req, res) => {
-Users.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-}, (error, updatedUsers) => {
-   //Redirect to user Dashboard page after update completes
-   console.log(updatedUsers);
-    res.redirect(`/dashboard/${updatedUsers.id}`);
-})
 });
 
 //=========================
@@ -128,7 +130,7 @@ Users.findByIdAndUpdate(req.params.id, req.body, {
 
 router.delete('/users/:id', (req, res) => {
         //Select the item by id and remove only one item
-    Users.findByIdAndDelete(req.params._id, (err, data) => {
+    Users.findByIdAndDelete(req.params.id, (err, data) => {
          //Redirect back to home page after delete completes
     res.redirect('/planIt');
     });

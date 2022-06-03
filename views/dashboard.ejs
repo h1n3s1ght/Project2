@@ -3,6 +3,8 @@
 <head>
     <%- include("./partials/head.ejs") %>
     <title>Dashboard</title>
+  <script async>
+  </script>
 </head>
 <body id="dashboard">
     <header class="dashHeader">
@@ -12,13 +14,30 @@
     <div class="dashLayout">
         <div class="dashContainer">
             <div id="locations">
-                <h2> | Locations | </h2>
-                <div  class="locations">
-                    <h5>List of Places You Would Like to Visit</h5>
+                <h2> Locations:</h2>
+                <div class="locations">
+                    <h5><u>List of Places You Would Like to Visit</u></h5> <br />
+                    <%if(user.locations){ for (let a = 0; a < user.locations.length ; a++){ %>
+                        <div class="oneLocation"><label><%= user.locations[a]%></label><input type="checkbox" name="isChecked" value="<%= user.locations[a]%>"/></div>
+                        <% }} else {%>
+                            <div> Add new locations below! </div>
+                        <%}%>
+                        <div id="bottomButtons">
+                            <form action="/users/<%=JSON.parse(JSON.stringify(user._id))%>?_method=PUT" method="POST" id="editLocations">
+                            <label> 
+                                <input
+                                    id="autocomplete"
+                                    type="text"
+                                    placeholder="Enter a city"
+                                    name="locations"
+                                    value=""
+                                />
+                            </label>
+                            <button onclick="addLocation()" type="submit" id="runSubmit">Save </button>
+                            </form>
+                        </div>
                 </div>
                 <div class="map" id="map">
-                    <!-- <h3> | Map | </h3> -->
-                    <!-- <div id="map"></div> -->
                 </div>
             </div>
             <div id="standard">

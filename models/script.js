@@ -33,6 +33,35 @@ function verifyPass() {
 //============
 
 
+//============
+//     Database 
+//============
+//      Scripts
+//============
+  // Script for new locations to be added or 
+  // deleted based on the button selected
+  //=============================
+  let updateNow = {};
+  let checkedLocations = {};
+  function addLocation(){
+    updateNow = user.locations;
+       updateNow.push($("input[name=locations]").val());
+      $("input[name=locations]").val() = user.locations;
+  }
+
+   function removeLocation(){
+    $("input:checkbox[name=isChecked]:checked").each(function(){
+      checkedLocations.push($(this).val());
+    });
+    const placesToRemove = new Set(checkedLocations)
+    const newLocations = user.locations.filter((name)=> {
+      return !checkedLocationsSet.has(name);
+    });
+    console.log(user.locations);
+  document.getElementById("editLocations").action = "/users/<%=JSON.parse(JSON.stringify(user.id))%>?_method=PUT";
+  document.getElementById("editLocations").method = "POST"
+  document.getElementById("editLocations").submit();
+  }
 
 //============
 //    New User 
@@ -107,7 +136,7 @@ function initAutocomplete(){
 function onPlaceChanged(){
     newPlace = autocomplete.getPlace();
     if(!newPlace.geometry){
-        document.getElementById('autocomplete').placeholder = 'Enter a place'
+        document.getElementById('autocomplete').placeholder = 'Enter a locality';
     } else {
         document.getElementById('mapInput').innerHTML = newPlace.name;
         // console.log(newPlace.geometry.location.lat);
