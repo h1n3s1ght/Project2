@@ -9,6 +9,8 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override');
 const app = express();
 require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config({path:__dirname+'/.env'});
 const bcrypt = require('bcrypt');
 const router = require('./controllers/userRoutes');
 const Users = require("./models/users")
