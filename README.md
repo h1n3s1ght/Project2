@@ -31,27 +31,37 @@ Eventually this page will also give:
 * HTML5
 * CSS3
 * jQuery/AJAX Calls
-* Dark Sky API
+* Google Maps API
+* WeatherAPI
+* MongoDB
+* Mongoose
+* Express
+* EJS
+* Dotenv
+* Method-Override
+
+#### Future Tech:
+* Eventbrite API
+* Hotels.com API
 
 
 ## Features
 * Users input what type of traveler they are and which location they would like to vist. 
-* App pulls live weather information from 3rd party API
+* Retains user information in MongoDB
+* Uses Bcrypt to encrypt user's Password saved on DB.
 
 
 ## Trello Planning
-* Link to Trello: https://trello.com/b/8zVsCRWh/pyt-dev-board-project-1-ga
+* Link to Trello: https://trello.com/b/Rxnyvprf/planit-traveling
 
 ## <a name="design"></a>Design
 * Design elements implemented using Flex-box and CSS3
-* Stored Color Palette as a comment at the top of the CSS
 
 
 ## <a name="nextsteps"></a>Project Next Steps
 * Add 2-4 other API's
     * <strong>Eventful:</strong> this will allow users to find out what event are available near their travel destination
-    * <strong>Amadeus:</strong> this will help user book Hotels at the destination during this period of time
-    * <strong>Google Maps GeoCoding:</strong> This will make this platform fully searchable based on what is searchable in google maps
+    * <strong>Amadeus or Hotels.com:</strong> this will help user book Hotels at the destination during this period of time
     * <strong>OpenTable API:</strong> This will allow users to create reservations at local food sites. 
 
 * <strong>CSS Edits like:</strong>
@@ -64,4 +74,4 @@ Eventually this page will also give:
 
 
 ## <a name="author"></a>About The Author
-I build websties currently, and will be focusing on the Full stack development. I have a computer science degree, but have been fpcusing on full stack development since graduation. 
+I build websties currently, and will be focusing on the Full-Stack development. I have a computer science degree, but have been focusing on Full-Stack development since graduation. 
