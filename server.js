@@ -58,13 +58,16 @@ db.on('disconnected', () => console.log('mongoDB is  DISconnected'));
 app.listen(PORT, () => {
     console.log('Server listening on port |', PORT);
     })
+app.get('/', (req, res) => {
+    res.render("index.ejs");
+});
+app.get("/planIt", (req,res) => {
+    res.render("index.ejs");
+});
 
 //==============================
 //======= MIDDLEWARE ===========
 //==============================
-app.get("/planIt", (req,res) => {
-    res.render("index.ejs");
-})
 
     //Utilize the Method Override Features
     //===========================
