@@ -96,7 +96,7 @@ router.post('/users/new', async (req,res)=> {
   const salt = await bcrypt.genSaltSync(6);
   console.log(salt);
   body.password = await bcrypt.hash(body.password, salt);
-    Users.create(body, async (error, user)=> {
+    Users.create(body, (error, user)=> {
       console.log(JSON.parse(JSON.stringify(user)));
       newUserID = JSON.parse(JSON.stringify(user._id));
       console.log(newUserID);
@@ -120,7 +120,9 @@ router.post("/users", async (req, res) => {
       } else {
         alert("Something doesn't match our records.  Please try again.");
       }
-    } catch {}
+    } catch {
+      console.log("nah");
+    }
   }
 });
 
