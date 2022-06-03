@@ -83,7 +83,5 @@ router.get("/", (req,res) => {
   res.redirect("/planIt");
 })
 
-app.use(Users);
-
 const userController = require('./controllers/userRoutes.js');
 app.use(userController);
