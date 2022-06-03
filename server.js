@@ -77,11 +77,11 @@ app.use(express.urlencoded({ extended: false }));
     //============
 app.use(express.json());
 
-app.use(router);
-
 app.get("/", (req,res) => {
   res.redirect("/planIt");
 })
+
+app.use(router);
 
 const userController = require('./controllers/userRoutes.js');
 app.use(userController);

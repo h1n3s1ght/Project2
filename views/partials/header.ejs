@@ -2,5 +2,35 @@
 <a href="#"><li> About Us</li></a>
 <a href="#"><li> Contact Us</li></a>
 <a href="#"><li> Sign Out</li></a>
-<a href="#"><li> Settings</li></a>
+ <button class="btn btn-primary" type="button" data-target="#settings" data-toggle="modal"><li>Settings</li></button>
+ <div class="modal" id="settings">
+     <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                         <form action="/users/<%=user.id%>?_method=PUT" method="POST">
+         <label for="fName">First Name: </label>
+            <input type="text" required name="fName" id="fName" value="<%=user.fName%>" />
+            <label for="lName">Last Name: </label>
+            <input type="text" required name="lName" id="lName" value="<%=user.lName%>" />
+            <label for="email">Email/Username: </label>
+            <input type="email" name="email" id="email" value="<%=user.email%>" />
+            <label for="password">Password Change: </label>
+            <input type="password" name="password" id="password" value=""/>
+             <!-- Submit Button -->
+             <!--===========-->
+            <input type="submit" name="" value="Update User" />
+        </form>
+        <form action="/users/<%= user.id%>?_method=DELETE"
+          method="POST">
+          <!-- Submit Button -->
+             <!--===========-->
+            <button type="submit" value="delete">Delete Account</button>
+        </form>
+
+                        <div class="modal-body">
+                        </div>
+                </div>
+            </div>
+        </div>
+ </div>
 </nav>
