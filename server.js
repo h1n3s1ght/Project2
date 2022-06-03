@@ -60,9 +60,6 @@ db.on('disconnected', () => console.log('mongoDB is  DISconnected'));
 app.listen(PORT, () => {
     console.log('Server listening on port |', PORT);
     })
-app.get('/', (req, res) => {
-    res.render("index.ejs");
-});
 
 //==============================
 //======= MIDDLEWARE ===========
@@ -81,6 +78,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(router);
+
 app.use(Users);
 
 const userController = require('./controllers/userRoutes.js');
