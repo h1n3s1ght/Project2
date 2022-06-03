@@ -32,6 +32,27 @@ function verifyPass() {
 //        Scripts
 //============
 
+  //Variables
+  //=======
+let giveLocation;
+let daysOfTrip;
+let eachDate = [];
+const settings = {
+  async: true,
+  crossDomain: true,
+  url: `http://api.weatherapi.com/v1/future.json?key=5095991527d84088b02205950220905`+`&q=`+`${giveLocation}`+`&dt=`+`${eachDate}`,
+  method: "GET",
+  headers: {
+    "weather API Key": "5095991527d84088b02205950220905",
+  },
+  };
+
+for (let ajax = 0; ajax <= daysOfTrip; ajax++){
+  //Call AJAX
+  //========
+$.ajax(settings).done(function (response) {
+  console.log("Weather is in now.");
+})}
 
 //============
 //     Database 

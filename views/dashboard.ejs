@@ -1,62 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <%- include("./partials/head.ejs") %>
     <title>Dashboard</title>
-  <script async>
-  </script>
-</head>
-<body id="dashboard">
+    <script async>
+        window.onload = function (userInfo){
+        console.log(userInfo);
+        daysOfTrip = (parseInt(user.leaveDate.charAt[8])+ parseInt(user.leaveDate.charAt[9])) - (parseInt(user.arriveDate.charAt[8])+ parseInt(user.arriveDate.charAt[9]));
+  console.log(daysOfTrip);
+}
+</script>
+  </head>
+  <body id="dashboard">
     <header class="dashHeader">
-        <%- include("./partials/header.ejs") %>
-        <h2> Welcome to your <strong> PlanIt Dashboard</strong></h2>
+      <%- include("./partials/header.ejs") %>
+      <h2>Welcome to your <strong> PlanIt Dashboard</strong></h2>
     </header>
     <div class="dashLayout">
-        <div class="dashContainer">
-            <div id="locations">
-                <h2> Locations:</h2>
-                <div class="locations">
-                    <h5><u>List of Places You Would Like to Visit</u></h5> <br />
-                    <%if(user.locations){ for (let a = 0; a < user.locations.length ; a++){ %>
-                        <div class="oneLocation"><label><%= user.locations[a]%></label><input type="checkbox" name="isChecked" value="<%= user.locations[a]%>"/></div>
-                        <% }} else {%>
-                            <div> Add new locations below! </div>
-                        <%}%>
-                        <div id="bottomButtons">
-                            <form action="/users/<%=JSON.parse(JSON.stringify(user._id))%>?_method=PUT" method="POST" id="editLocations">
-                            <label> 
-                                <input
-                                    id="autocomplete"
-                                    type="text"
-                                    placeholder="Enter a city"
-                                    name="locations"
-                                    value=""
-                                />
-                            </label>
-                            <button onclick="addLocation()" type="submit" id="runSubmit">Save </button>
-                            </form>
-                        </div>
-                </div>
-                <div class="map" id="map">
-                </div>
+      <div class="dashContainer">
+        <div id="locations">
+          <h2>Locations:</h2>
+          <div class="locations">
+            <h5><u>Current Place You Would Like to Visit</u></h5>
+            <br />
+            <%if(user.locations){ for (let a = 0; a < user.locations.length ; a++){ %>
+            <div class="oneLocation">
+              <label><%= user.locations[a]%></label
+              ><input
+                type="checkbox"
+                name="isChecked"
+                value="<%= user.locations[a]%>"
+              />
             </div>
-            <div id="standard">
-            <div class="dates">
-
+            <% }} else {%>
+            <div>Add a new location below!</div>
+            <%}%>
+            <div id="bottomButtons">
+              <form
+                action="/users/<%=JSON.parse(JSON.stringify(user._id))%>?_method=PUT"
+                method="POST"
+                id="editLocations"
+              >
+                <label>
+                  <input
+                    id="autocomplete"
+                    type="text"
+                    placeholder="Enter a city"
+                    name="locations"
+                    value=""
+                  />
+                </label>
+                <button onclick="addLocation()" type="submit" id="runSubmit">
+                  Save
+                </button>
+              </form>
             </div>
-            <div class="weather">
-
-            </div>
-            </div>
-            <div id="entertainment">
-            <div class="events">
-
-            </div>
-            <div class="housing">
-
-            </div>
-            </div>
+          </div>
+          <div class="map" id="map"></div>
         </div>
+        <div id="standard">
+          <h2>Weather:</h2>
+          <div id="dates">
+            <%if(user.arriveDate && user.leaveDate){ for (let b = 0; b < 1 ; b++){ %>
+            <div class="datesTwo">
+            <h5><u>Weather for the above location at the below dates.</u></h5><br />
+              <div class="arriveDate">
+                <strong> First</strong> day of the trip: <%= user.arriveDate%>
+              </div>
+              <br />
+              <div class="leaveDate">
+                <strong>Last</strong> day of the trip: <%= user.leaveDate%>
+              </div> <br />
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-target="#upDates"
+                data-toggle="modal"
+                id="noStyle"
+              >
+                <li>Update Dates</li>
+              </button>
+              <div class="modal" id="upDates">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <form
+                        action="/users/<%=user.id%>?_method=PUT"
+                        method="POST"
+                      >
+                        <label for="arriveDate">First day of the trip: </label>
+                        <input
+                          type="date"
+                          required
+                          name="arriveDate"
+                          id="arriveDate"
+                          value="<%=user.arriveDate%>"
+                        />
+                        <label for="leaveDate">First day of the trip: </label>
+                        <input
+                          type="date"
+                          required
+                          name="leaveDate"
+                          id="leaveDate"
+                          value="<%=user.leaveDate%>"
+                        />
+                        <input type="submit" name="" value="Update dates" />
+                      </form>
+                      <div class="modal-body"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }}%>
+          </div>
+          <div class="weather"></div>
+        </div>
+        <div id="entertainment">
+        <h2> Planning:</h2>
+          <div class="events"></div>
+          <div class="housing"></div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

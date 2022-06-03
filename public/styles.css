@@ -133,7 +133,7 @@ background-size: 100%;
               -1px 1px 10px beige;
 }
 
-#standard div{
+#standard>div{
   box-shadow: 1px 1px 10px black,
               -1px -1px 10px black,
               1px -1px 10px black,
@@ -252,7 +252,7 @@ nav {
  padding: 2% 0%;
 }
 
-nav li , nav a , .qSubmit input{
+nav li , nav a , .qSubmit input , #noStyle.btn ,#noStyle.btn-primary {
   font-size: .95em;
   width: 25%;
   text-decoration: none;
@@ -298,6 +298,13 @@ height: 75vh;
   background-color: beige;
 }
 
+.locations {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
 #locations{
   background-image: url(https://i.imgur.com/HSjpSnf.jpg);
 }
@@ -315,6 +322,50 @@ background-image: url(https://i.imgur.com/vsI12Pl.jpg);
 .iterate h5 {
   margin-bottom: 5%;
 }
+
+#noStyle.btn ,#noStyle.btn-primary {
+  background-color: beige;
+  border: none;
+  margin:  0% auto;
+}
+
+#noStyle.btn li ,#noStyle.btn-primary li {
+  margin: -5% 0% 0% 0%;
+  text-align: center;
+  padding: 2%;
+}
+
+#bottomButtons {
+  margin-top: 20%;
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  width: 80%;
+}
+
+#dates {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.datesTwo {
+   background-color: beige;
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.datesTwo h5 {
+  background-color: beige;
+  color: black;
+}
+
 
 
 /*=============== */

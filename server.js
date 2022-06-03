@@ -30,6 +30,10 @@ const MONGODB_URI = process.env.MONGODB_URI;
     //============
 const PORT = process.env.PORT;
 
+    //Hide Ajax Key
+    //==========
+const WeatherKey = process.env.WeatherKey;
+
     //Database connection
     //==============
 const db = mongoose.connection;
