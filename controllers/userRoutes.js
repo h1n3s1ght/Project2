@@ -100,7 +100,7 @@ router.post('/users/new', async (req,res)=> {
       console.log(JSON.parse(JSON.stringify(user)));
       newUserID = JSON.parse(JSON.stringify(user._id));
       console.log(newUserID);
-      res.redirect(`http://localhost:3000/users/${newUserID}`);
+      res.redirect(`/users/${newUserID}`);
     });
 });
 

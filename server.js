@@ -13,7 +13,8 @@ const dotenv = require('dotenv');
 dotenv.config({path:__dirname+'/.env'});
 const bcrypt = require('bcrypt');
 const router = require('./controllers/userRoutes');
-const Users = require("./models/users")
+const Users = require("./models/users");
+const timeout = require("timeout");
 
     //Use Public Directory
     //===============
@@ -61,9 +62,6 @@ app.listen(PORT, () => {
     console.log('Server listening on port |', PORT);
     })
 app.get('/', (req, res) => {
-    res.render("index.ejs");
-});
-app.get("/planIt", (req,res) => {
     res.render("index.ejs");
 });
 
