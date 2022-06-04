@@ -80,10 +80,12 @@ app.use(methodOverride("_method"));
     // Body parser middleware: it creates req.body
     //================================
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }))
 
     //parse JSON Data
     //============
 app.use(express.json());
+app.use(bodyParser.json())
 
 app.use(router);
 

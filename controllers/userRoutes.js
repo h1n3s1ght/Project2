@@ -12,6 +12,16 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const db = mongoose.connection;
 
+ // Body parser middleware: it creates req.body
+    //================================
+router.use(express.urlencoded({ extended: false }));
+router.use(bodyParser.urlencoded({ extended: true }))
+
+    //parse JSON Data
+    //============
+router.use(express.json());
+router.use(bodyParser.json())
+
     //Utilize the Method Override Features
     //===========================
 router.use(methodOverride("_method"));
@@ -149,8 +159,8 @@ router.delete('/users/:id', (req, res) => {
 
 router.put('/dashboards/:id', (req, res) => {
   console.log("went through server remove element");
-  console.log(req.body.selectedLocations)
-  Users.findOneAndUpdate({_id: req.params.id },{ $pull: { locations: req.body.selectedLocations}}, (err, foundUser)=> {
+  console.log(bodyParser(req.body.selectedLocations))
+  Users.findByIdAndUpdate({_id: req.params.id },{ $pull: { locations: req.body.selectedLocations}}, (err, foundUser)=> {
     console.log(foundUser)
     res.redirect(`/dashboard/${foundUser._id}`)
 })});
