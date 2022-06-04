@@ -33,9 +33,9 @@ router.use(methodOverride("_method"));
 //========================
 //===== Index / GET =========
 //========================
-// router.get("/", (req,res) => {
-//   res.redirect("/planIt");
-// })
+router.get("/", (req, res) => {
+  res.redirect("/planIt");
+})
 
 router.get("/planIt", (req, res) => {
   Users.find({}, (error, allUsers) => {

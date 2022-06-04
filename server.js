@@ -65,9 +65,9 @@ app.listen(PORT, () => {
     console.log('Server listening on port |', PORT);
     })
 
-app.get("/", (req,res) => {
-  res.redirect("/planIt");
-})
+// app.get("/", (req,res) => {
+//   res.redirect("/planIt");
+// })
 
 //==============================
 //======= MIDDLEWARE ===========
