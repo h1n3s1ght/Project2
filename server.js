@@ -28,7 +28,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
     //Port Set Variable
     //============
-const PORT = process.env.PORT;
+let PORT = process.env.PORT || 8080;
 
     //Hide Ajax Key
     //==========
