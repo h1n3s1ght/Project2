@@ -70,8 +70,8 @@ app.get("/", (req, res) => {
   res.redirect("/planIt");
 })
 
-app.get("/planIt", (req, res) => {
-  Users.find({}, (error, allUsers) => {
+app.get("/planIt", async (req, res) => {
+  await Users.find({}, (error, allUsers) => {
     res.render("index.ejs", { users: allUsers });
   });
 });
