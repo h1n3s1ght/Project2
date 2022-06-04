@@ -64,10 +64,17 @@ db.on('disconnected', () => console.log('mongoDB is  DISconnected'));
 app.listen(PORT, () => {
     console.log('Server listening on port |', PORT);
     })
+app.use(router);
 
-// app.get("/", (req,res) => {
-//   res.redirect("/planIt");
-// })
+app.get("/", (req, res) => {
+  res.redirect("/planIt");
+})
+
+app.get("/planIt", (req, res) => {
+  Users.find({}, (error, allUsers) => {
+    res.render("index.ejs", { users: allUsers });
+  });
+});
 
 //==============================
 //======= MIDDLEWARE ===========
