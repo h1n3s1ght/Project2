@@ -163,3 +163,5 @@ function onPlaceChanged(){
         // console.log(newPlace.geometry.location.lng);
         // updateMap();
     }}
+
+    google.maps.event.addDomListener(window, 'load', initMap);

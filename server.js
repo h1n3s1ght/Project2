@@ -28,11 +28,11 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
     //Port Set Variable
     //============
-let PORT = process.env.PORT || 8080;
+let PORT = process.env.PORT || 3000;
 
-    //Hide Ajax Key
-    //==========
-const WeatherKey = process.env.WeatherKey;
+//     //Hide Ajax Key
+//     //==========
+// const WeatherKey = process.env.WeatherKey;
 
     //Database connection
     //==============
@@ -71,12 +71,6 @@ app.get("/", (req, res) => {
     res.render("index.ejs", { users: allUsers });
   });
 })
-
-// app.get("/planIt", (req, res) => {
-//    Users.find({}, (error, allUsers) => {
-//     res.render("index.ejs", { users: allUsers });
-//   });
-// });
 
 //==============================
 //======= MIDDLEWARE ===========
