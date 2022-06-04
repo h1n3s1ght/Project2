@@ -67,14 +67,16 @@ app.listen(PORT, () => {
 app.use(router);
 
 app.get("/", (req, res) => {
-  res.redirect("/planIt");
-})
-
-app.get("/planIt", (req, res) => {
    Users.find({}, (error, allUsers) => {
     res.render("index.ejs", { users: allUsers });
   });
-});
+})
+
+// app.get("/planIt", (req, res) => {
+//    Users.find({}, (error, allUsers) => {
+//     res.render("index.ejs", { users: allUsers });
+//   });
+// });
 
 //==============================
 //======= MIDDLEWARE ===========

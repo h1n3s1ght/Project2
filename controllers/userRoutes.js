@@ -153,7 +153,7 @@ router.delete('/users/:id', (req, res) => {
         //Select the item by id and remove only one item
     Users.findByIdAndDelete(req.params.id, (err, data) => {
          //Redirect back to home page after delete completes
-    res.redirect('/planIt');
+    res.redirect('/');
     });
 });
 
