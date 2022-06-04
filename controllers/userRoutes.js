@@ -42,9 +42,15 @@ router.get("/admin", (req, res) => {
 //========================
 //===== Update / PUT ========
 //========================
+router.put('/dashboard/:id', (req, res) => {
+  console.log("went through server add element server");
+  Users.findOneAndUpdate({_id: req.params.id },{ $push: { locations:  req.body.locations}}, (err, foundUser)=> {
+    res.redirect(`/dashboard/${foundUser._id}`)
+})});
+
 
 router.put('/users/:id', (req, res) => {
-  console.log("went through server");
+  // console.log("went through server");
 Users.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
 }, (error, updatedUsers) => {
@@ -141,6 +147,13 @@ router.delete('/users/:id', (req, res) => {
     });
 });
 
+router.put('/dashboards/:id', (req, res) => {
+  console.log("went through server remove element");
+  console.log(req.body.selectedLocations)
+  Users.findOneAndUpdate({_id: req.params.id },{ $pull: { locations: req.body.selectedLocations}}, (err, foundUser)=> {
+    console.log(foundUser)
+    res.redirect(`/dashboard/${foundUser._id}`)
+})});
 
 
 module.exports = router;

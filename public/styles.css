@@ -144,10 +144,24 @@ background-size: 100%;
   background-color: #635D5C;
   border-radius: 15px;
   color: beige;
- /* box-shadow: 1px 1px 10px beige,
+}
+
+.dashContainer h2 {
+  box-shadow: 1px 1px 10px beige,
               -1px -1px 10px beige,
               1px -1px 10px beige,
-              -1px 1px 10px beige; */
+              -1px 1px 10px beige;
+}
+
+#standard h2{
+   box-shadow: 1px 1px 10px #635D5C,
+              -1px -1px 10px #635D5C,
+              1px -1px 10px #635D5C,
+              -1px 1px 10px #635D5C;
+}
+
+.arriveDate, .leaveDate {
+  font-size: 1.2em;
 }
 
 .dashContainer h5 {
@@ -180,7 +194,7 @@ background-size: 100%;
 }
 .oneLocation input {
   width: 15%;
-  margin: 1% 0%;
+  margin: 3% 0% 1% 0%;
   padding: 1%;
   align-self: right;
 }
@@ -295,7 +309,7 @@ height: 75vh;
 }
 
 #standard {
-  background-color: beige;
+  background-color: tan;
 }
 
 .locations {
@@ -350,6 +364,7 @@ background-image: url(https://i.imgur.com/vsI12Pl.jpg);
   justify-content: center;
   align-content: center;
   text-align: center;
+  background-color: beige;
 }
 
 .datesTwo {

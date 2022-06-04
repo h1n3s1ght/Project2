@@ -55,9 +55,9 @@ $.ajax(settings).done(function (response) {
 })}
 
 //============
-//     Database 
+//     Dashboard 
 //============
-//      Scripts
+//       Scripts
 //============
   // Script for new locations to be added or 
   // deleted based on the button selected
@@ -70,19 +70,18 @@ $.ajax(settings).done(function (response) {
       $("input[name=locations]").val() = user.locations;
   }
 
-   function removeLocation(){
-    $("input:checkbox[name=isChecked]:checked").each(function(){
-      checkedLocations.push($(this).val());
-    });
-    const placesToRemove = new Set(checkedLocations)
-    const newLocations = user.locations.filter((name)=> {
-      return !checkedLocationsSet.has(name);
-    });
-    console.log(user.locations);
-  document.getElementById("editLocations").action = "/users/<%=JSON.parse(JSON.stringify(user.id))%>?_method=PUT";
-  document.getElementById("editLocations").method = "POST"
-  document.getElementById("editLocations").submit();
-  }
+  // Delete Selected Elements in
+  // the div .oneLocation if checked
+  //=======================
+function getSelect(){
+  selectedLocations = [];
+  let sendingInfo = $("input:text[name=selectedLocations]");
+  $("input:checkbox[name=byeBye]:checked").each(function(){
+    selectedLocations.push($(this).val());
+});
+sendingInfo.attr("value", selectedLocations);
+console.log(selectedLocations);
+};
 
 //============
 //    New User 

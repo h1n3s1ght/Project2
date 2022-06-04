@@ -3,13 +3,12 @@
   <head>
     <%- include("./partials/head.ejs") %>
     <title>Dashboard</title>
-    <script async>
-        window.onload = function (userInfo){
-        console.log(userInfo);
-        daysOfTrip = (parseInt(user.leaveDate.charAt[8])+ parseInt(user.leaveDate.charAt[9])) - (parseInt(user.arriveDate.charAt[8])+ parseInt(user.arriveDate.charAt[9]));
-  console.log(daysOfTrip);
-}
-</script>
+    <script>
+        // Set Variable to be
+        // Called Globally
+        //==============
+    let selectedLocations = [];
+    </script>
   </head>
   <body id="dashboard">
     <header class="dashHeader">
@@ -23,21 +22,23 @@
           <div class="locations">
             <h5><u>Current Place You Would Like to Visit</u></h5>
             <br />
+            <form for="deleteSelected" action="/dashboards/<%=user._id%>?_method=PUT" method="POST">
             <%if(user.locations){ for (let a = 0; a < user.locations.length ; a++){ %>
-            <div class="oneLocation">
-              <label><%= user.locations[a]%></label
-              ><input
-                type="checkbox"
-                name="isChecked"
-                value="<%= user.locations[a]%>"
-              />
+            <div class="oneLocation locationSelect<%=a%>">
+              <h5> <%=user.locations[a]%></h5>
+              <input type="checkbox" name="byeBye" 
+              value="<%=user.locations[a]%>"/>
             </div>
             <% }} else {%>
             <div>Add a new location below!</div>
             <%}%>
+            <input type="text" value="" name="selectedLocations" id="sendInfo" hidden/>
+            <button onclick="getSelect()" type="submit" name="deleteSelected" id="deleteSelected" name="deleteSelected">
+                Delete Selected Locations</button> 
+            </form>
             <div id="bottomButtons">
-              <form
-                action="/users/<%=JSON.parse(JSON.stringify(user._id))%>?_method=PUT"
+              <form for="runSubmit"
+                action="/dashboard/<%=JSON.parse(JSON.stringify(user._id))%>?_method=PUT"
                 method="POST"
                 id="editLocations"
               >
@@ -50,7 +51,7 @@
                     value=""
                   />
                 </label>
-                <button onclick="addLocation()" type="submit" id="runSubmit">
+                <button onclick="addLocation()" type="submit" id="runSubmit" name="runSubmit">
                   Save
                 </button>
               </form>
@@ -65,11 +66,11 @@
             <div class="datesTwo">
             <h5><u>Weather for the above location at the below dates.</u></h5><br />
               <div class="arriveDate">
-                <strong> First</strong> day of the trip: <%= user.arriveDate%>
+                <strong> First</strong> day of the trip:  <strong><%= user.arriveDate%></strong>
               </div>
               <br />
               <div class="leaveDate">
-                <strong>Last</strong> day of the trip: <%= user.leaveDate%>
+                <strong>Last</strong> day of the trip:  <strong><%= user.leaveDate%></strong>
               </div> <br />
               <button
                 class="btn btn-primary"
