@@ -140,7 +140,6 @@ function initMap() {
 
 // function convertNewPlace(){
 // }
-var currentLocation = "";
 var autocomplete;
 function initAutocomplete(){
     autocomplete = new google.maps.places.Autocomplete(
@@ -164,8 +163,9 @@ function onPlaceChanged(){
         // updateMap();
     }}
 
-    google.maps.event.addDomListener(window, 'load', initMap);
+    google.maps.event.addEventListener(window, 'load', initMap);
 
 function getCurrentLocation(){
-  $("")
+  console.log($(".currentSelectedLocation").attr("value"));
+  // currentLocation.push($(".currentSelectedLocation").attr("value"));
 }
