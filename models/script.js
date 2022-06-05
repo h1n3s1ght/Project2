@@ -149,7 +149,7 @@ function initAutocomplete(){
             componentRestrictions: {'country': ['US']},
             fields: ['geometry', 'place_id', 'name']
         });
-        autocomplete.addListener('place_changed', onPlaceChanged);
+        autocomplete.addEventListener('place_changed', onPlaceChanged);
 }
  let newPlace;
 function onPlaceChanged(){
@@ -165,7 +165,7 @@ function onPlaceChanged(){
 
     google.maps.event.addEventListener(window, 'load', initMap);
 
-function getCurrentLocation(){
-  console.log($(".currentSelectedLocation").attr("value"));
-  // currentLocation.push($(".currentSelectedLocation").attr("value"));
-}
+// function getCurrentLocation(){
+//   console.log($(".currentSelectedLocation").attr("value"));
+//   // currentLocation.push($(".currentSelectedLocation").attr("value"));
+// }
