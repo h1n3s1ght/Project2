@@ -25,7 +25,7 @@
             <form for="deleteSelected" action="/dashboards/<%=user._id%>?_method=PUT" method="POST">
             <%if(user.locations){ for (let a = 0; a < user.locations.length ; a++){ %>
             <div class="oneLocation locationSelect<%=a%>">
-              <h5> <%=user.locations[a]%></h5>
+              <h5> <a id="currentSelectedLocation<%=a%>" href="#" onclick="getCurrentLocation; return false;"> <%=user.locations[a]%></h5></a>
               <input type="checkbox" name="byeBye" 
               value="<%=user.locations[a]%>"/>
             </div>
@@ -33,11 +33,13 @@
             <div>Add a new location below!</div>
             <%}%>
             <input type="text" value="" name="selectedLocations" id="sendInfo" hidden/>
-            <button onclick="getSelect()" type="submit" name="deleteSelected" id="deleteSelected" name="deleteSelected">
+            <br /><button onclick="getSelect()" type="submit" name="deleteSelected" id="deleteSelected" name="deleteSelected"
+            class="bottomButtons">
                 Delete Selected Locations</button> 
             </form>
-            <div id="bottomButtons">
-              <form for="runSubmit"
+            <br />
+            <div class="bottomButtons">
+              <br /><form for="runSubmit"
                 action="/dashboard/<%=JSON.parse(JSON.stringify(user._id))%>?_method=PUT"
                 method="POST"
                 id="editLocations"
@@ -46,7 +48,7 @@
                   <input
                     id="autocomplete"
                     type="text"
-                    placeholder="Enter a city"
+                    placeholder="Add a New city"
                     name="locations"
                     value=""
                   />

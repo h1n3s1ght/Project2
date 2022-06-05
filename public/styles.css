@@ -151,6 +151,7 @@ background-size: 100%;
               -1px -1px 10px beige,
               1px -1px 10px beige,
               -1px 1px 10px beige;
+    width: 100%;
 }
 
 #standard h2{
@@ -181,8 +182,8 @@ background-size: 100%;
 }
 
 #locations h2, #entertainment h2, #standard h2{
-  width: 15%;
-  margin: 2% 0% 1% 42%;
+  width: 22%;
+  margin: 2% 0% 1% 38%;
   padding: 10px;
   align-content: center;
 }
@@ -305,7 +306,7 @@ nav li:hover, .qSubmit button:hover {
 }
 
 #locations, #entertainment, #standard {
-height: 75vh;
+height: 100vh;
 }
 
 #standard {

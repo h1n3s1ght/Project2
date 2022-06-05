@@ -140,7 +140,7 @@ function initMap() {
 
 // function convertNewPlace(){
 // }
-
+var currentLocation = "";
 var autocomplete;
 function initAutocomplete(){
     autocomplete = new google.maps.places.Autocomplete(
@@ -165,3 +165,7 @@ function onPlaceChanged(){
     }}
 
     google.maps.event.addDomListener(window, 'load', initMap);
+
+function getCurrentLocation(){
+  $("")
+}
